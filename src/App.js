@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Header from "./component/Header/Header";
+import MoviesPage from "./component/MoviesPage";
+import {Route, Routes} from "react-router-dom";
+import TvShowPage from "./component/TvShowPage";
+import TrendingPage from "./component/TrendingPage";
+import PricingPage from "./component/PricingPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+       <Header />
+       <Routes>
+           <Route path={'/'} element={<MoviesPage/>}/>
+           <Route path={'/tvshow'} element={<TvShowPage/>}/>
+           <Route path={'/trending'} element={<TrendingPage/>}/>
+           <Route path={'/pricing'} element={<PricingPage/>}/>
+       </Routes>
+   </>
   );
 }
 
