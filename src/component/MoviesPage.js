@@ -2,13 +2,14 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import Avatar from '../image/img_avatar.png'
 import Play from '../image/play.svg'
-import '../style/Videos.css'
+import '../style/Videos.scss'
+import CategoryBar from "./Header/CategoryBar";
 
 const MovieItem = (props) => {
     const movie = props.movie
     const imagesMovie = props.imagesMovie
     return (
-        <div id={'container'} key={movie.id}>
+        <div id={'container'}>
             <img src={Play} id={'playIcon'} alt={''}/>
             <img src={movie.poster_path ? `${imagesMovie}${movie.poster_path}` : Avatar}
                  alt={''}/>
@@ -20,6 +21,7 @@ const MovieItem = (props) => {
 const MoviesPage = () => {
         const [movieData, setMovieData] = useState([])
         const Api = 'https://api.themoviedb.org/3/discover/movie'
+
         const imagesMovie = 'https://image.tmdb.org/t/p/w500'
         const MovieCall = async () => {
             const data = await axios.get(Api, {
@@ -33,12 +35,23 @@ const MoviesPage = () => {
         useEffect(() => {
             MovieCall()
         }, [])
-        // console.log(movieData)
+
+        const changeGenres = (id) => {
+            if (movieData) {
+                // const getGenreId = movieData.filter(movie => idArr === id)
+                // const findMoviesByGenreId = movieData.filter(movie => movie.genre_ids === id)
+            }
+
+        }
+
+    const getGenreId = movieData.filter(movie => (movie.genre_ids).includes(12))
+    console.log(getGenreId)
+
         return (
             <>
-                <h1>Movies</h1>
+                <CategoryBar changeGenres={changeGenres}/>
                 <div className={'movies-container'}>
-                    {movieData.map(movie => <MovieItem movie={movie} imagesMovie={imagesMovie} />)}</div>
+                    {movieData.map(movie => <MovieItem key={movie.id} movie={movie} imagesMovie={imagesMovie}/>)}</div>
             </>
         );
     }

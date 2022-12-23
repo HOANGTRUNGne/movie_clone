@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import '../../style/Header.css'
+import '../../style/Header.scss'
 import SearchBtn from '../../image/search.svg'
 import { NavLink} from "react-router-dom";
 
@@ -40,9 +40,6 @@ const Navbar = () => {
                     </div>
                 </div>
             </nav>
-
-
-
         </>
     );
 };

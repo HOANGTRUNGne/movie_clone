@@ -1,37 +1,26 @@
 import React, {useState, useEffect} from 'react';
-import axios from "axios";
+import '../../style/Header.scss'
+import genresArr from '../../Api/GenreMovie.json'
 
-const GrenreItem = () =>{
-    return(
-        <li></li>
-    )
-}
-const CategoryBar = () => {
-    const [genres, setGenres] = useState([])
-    const genresApi = 'https://api.themoviedb.org/3/genre/movie/list'
-    const GenresCall = async () => {
-        const data = await axios.get(genresApi, {
-            params: {
-                api_key: 'e06dfd90d926d62130148f7ba938baa8'
-            }
-        })
-        const results = data.data.genres
-        setGenres(results)
-    }
-    useEffect(() => {
-        GenresCall()
-    }, [])
 
-    console.log(genres)
+
+
+const CategoryBar = (props) => {
 
     return (
         <>
-
-            {genres.map(genre => {
-                return (
-                    <ul className={'sub-heading'}><GrenreItem /></ul>
-                )
-            })}
+            <div className={'heading'}>
+                <h1>Movies</h1>
+                <ul className={'sub-heading'}>
+                    {genresArr.map(genre => {
+                            return (
+                                <li key={genre.id}><a onClick={() => props.changeGenres(genre.id)} >{genre.name}</a></li>
+                            )
+                        }
+                    )
+                    }
+                </ul>
+            </div>
         </>
     );
 };
