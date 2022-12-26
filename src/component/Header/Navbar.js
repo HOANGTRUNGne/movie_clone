@@ -1,12 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState, createContext} from 'react';
 import '../../style/Header.scss'
 import SearchBtn from '../../image/search.svg'
 import { NavLink} from "react-router-dom";
 
-
+export const Container = React.createContext()
 const Navbar = () => {
     const [toggle, setToggle] = useState(true)
     return (
+        <Container.Provider value={toggle}>
         <>
             <nav className={toggle ? '' : 'navBarColor'}>
                 <div className={'nav-options'}>
@@ -41,6 +42,7 @@ const Navbar = () => {
                 </div>
             </nav>
         </>
+        </Container.Provider>
     );
 };
 

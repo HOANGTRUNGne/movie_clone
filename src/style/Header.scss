@@ -121,27 +121,29 @@ span #HomeLight:hover, #MoviesLight:hover, #TrendingLight:hover, #PricingLight:h
   margin-left: 310px;
   width: 25px;
 }
-.heading{
+
+.heading {
   display: flex;
   align-items: center;
   padding-left: 3rem;
   margin: 15px 0 20px;
 }
+
 .sub-heading {
-  list-style-type: none;
-  margin-left: 50px;
-  padding: 0;
-  overflow: hidden;
   display: flex;
-  align-items: center;
-  & li a{
+  margin-left: 30px;
+
+  & button {
+    overflow: hidden;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
     color: #fff;
-    padding: 5px 7px;
-    display: inline-table;
+    padding: 5px 10px;
     margin-left: 10px;
     cursor: pointer;
-    transition: .7s all;
-    background: #504d49;
+    transition: 0.7s all;
+    background: #7b766f;
     text-decoration: none;
   }
 }
