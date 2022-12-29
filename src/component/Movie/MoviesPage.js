@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import axios from "axios";
-import Avatar from '../../image/img_avatar.png'
+import NoImg from '../../image/user.svg'
 import Play from '../../image/play.svg'
 import '../../style/Videos.scss'
 import CategoryBar from "../Header/CategoryBar";
@@ -28,7 +28,7 @@ const MovieItem = (props) => {
         <Link  to={`/info/${movie.id}`} style={{ textDecoration: 'none' }}>
             <div id={'container'}>
                 <img src={Play} id={'playIcon'} alt={''}/>
-                <img src={poster_path ? `${imagesMovie}${poster_path}` : Avatar}
+                <img src={poster_path ? `${imagesMovie}${poster_path}` : NoImg}
                      alt={''}/>
                 <h3 id={'smaller-Text'}>{title}</h3>
             </div>

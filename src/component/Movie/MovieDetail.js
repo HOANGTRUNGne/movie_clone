@@ -11,8 +11,7 @@ const MovieDetail = () => {
     const [currentMovie, setMovieDetail] = useState({})
     const [castMovie, setCastMovie] = useState({})
     const {id} = useParams()
-    const imagesMovie = 'https://image.tmdb.org/t/p/w500'
-
+    const imagesMovieDetail = 'https://image.tmdb.org/t/p/w500'
     const ApiMovieDetail = `https://api.themoviedb.org/3/movie/${id}`
     const ApiCast = `https://api.themoviedb.org/3/movie/${id}/credits`
 
@@ -44,8 +43,8 @@ const MovieDetail = () => {
 
     return (
         <>
-            <MovieHeader currentMovie={currentMovie} imagesMovie={imagesMovie} />
-            <MovieContent castMovie={castMovie}/>
+            <MovieHeader currentMovie={currentMovie} imagesMovieDetail={imagesMovieDetail} />
+            <MovieContent currentMovie={currentMovie} castMovie={castMovie}/>
         </>
     );
 };

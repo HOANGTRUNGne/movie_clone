@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 const MovieHeader = (props) => {
     const {poster_path, title, genres, overview, tagline, release_date, backdrop_path, runtime} = props.currentMovie
-    const imagesMovie = props.imagesMovie
+    const imagesMovieDetail = props.imagesMovieDetail
     const genresMovie = genres?.map(genre => {
         return (
             <Link to={'/'} key={genre.id} style={{marginLeft: '10px'}}>{genre.name}</Link>
@@ -17,12 +17,12 @@ const MovieHeader = (props) => {
     }
     return (
         <>
-            <div className={'movie-header'} style={{backgroundImage: `url(${imagesMovie}${backdrop_path})`}}>
-                <div className={'movie-detail'}>
+            <div className={'movie-header'} style={{backgroundImage: `url(${imagesMovieDetail}${backdrop_path})`}}>
+                <div className={'movie-detail'} style={{color:'white',}}>
                     <div className={'movie-banner'}>
                         <div className={'poster-wrapper'}>
                             <img className={'poster'}
-                                 src={`${imagesMovie}${poster_path}`}/>
+                                 src={`${imagesMovieDetail}${poster_path}`}/>
                         </div>
                         <div className={'intro-wrapper'}>
                             <div className={'intro-title'}>
@@ -37,8 +37,10 @@ const MovieHeader = (props) => {
                                 </div>
                             </div>
                             <div className={'actions'}>
-                                <img src={PlayWite} alt={''}/>
-                                Play Trailer
+                                <div to={'/'} className={'play-trailer'}>
+                                    <img src={PlayWite} alt={''}/>
+                                    Play Trailer
+                                </div>
                             </div>
                             <div className={'intro-overview'}>
                                 <h3 className={'tagline'}>{tagline}</h3>
