@@ -1,13 +1,15 @@
+@use "variables" as *;
 nav {
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   background-color: #001219;
   align-items: center;
+  box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
 }
 
 nav h1 {
-  color: #fff;
+  color: $whiteColor;
   margin-left: 40px;
 }
 
@@ -17,28 +19,29 @@ nav a {
 
 nav span {
   cursor: pointer;
-  margin-left: 40px;
-  font-size: .85rem;
+  margin-left: 30px;
+  font-size: 0.85rem;
   font-weight: 600;
   text-transform: uppercase;
+  padding: 10px;
 }
 
 nav span:hover {
-  color: #fff;
+  color: $whiteColor;
   border-bottom: 2px solid #EE9B00;
   padding-bottom: 5px;
 }
 
 span #HomeLight, #MoviesLight, #TrendingLight, #PricingLight {
-  color: #fff;
+  color: $whiteColor;
 }
 
 span #HomeLight:hover, #MoviesLight:hover, #TrendingLight:hover, #PricingLight:hover {
-  border-bottom: 2px solid #ff206e;
+  border-bottom: 2px solid $pinkRedColor;
 }
 
-#navBarColor {
-  color: #fff;
+.navBarColor {
+  color: $whiteColor;
   background-color: #38bdab;
   transition: .6s;
 }
@@ -49,17 +52,29 @@ span #HomeLight:hover, #MoviesLight:hover, #TrendingLight:hover, #PricingLight:h
 }
 
 #heading {
-  color: #ff206e;
+  color: $pinkRedColor;
 }
 
 #navBarColor span:hover {
-  border-bottom: 2px solid #ff206e;
+  border-bottom: 2px solid $pinkRedColor;
   padding-bottom: 5px;
 }
 
-.input-group {
+.primary-group {
   display: flex;
   align-items: center;
+  & .account{
+    color: $whiteColor;
+    margin-right: 20px;
+    cursor: pointer;
+    padding: 10px ;
+    & .avatar{
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
 }
 
 #Color-switcher {
@@ -75,7 +90,7 @@ span #HomeLight:hover, #MoviesLight:hover, #TrendingLight:hover, #PricingLight:h
   position: absolute;
   left: 5px;
   top: 4px;
-  background-color: #fff;
+  background-color: $whiteColor;
   width: 33px;
   height: 33px;
   border-radius: 50%;
@@ -84,7 +99,7 @@ span #HomeLight:hover, #MoviesLight:hover, #TrendingLight:hover, #PricingLight:h
 
 #Color-switcher-moved {
   position: absolute;
-  background-color: #fff;
+  background-color: $whiteColor;
   left: 40px;
   top: 4px;
   width: 33px;
@@ -93,7 +108,7 @@ span #HomeLight:hover, #MoviesLight:hover, #TrendingLight:hover, #PricingLight:h
   transition: .6s;
 }
 
-.input-group input {
+.primary-group input {
   position: relative;
   width: 323px;
   height: 4vh;
@@ -102,17 +117,17 @@ span #HomeLight:hover, #MoviesLight:hover, #TrendingLight:hover, #PricingLight:h
   margin-right: 30px;
 }
 
-.input-group input[type='text'] {
+.primary-group input[type='text'] {
   padding-left: 17px;
   font-size: 1rem;
   color: black;
 }
 
-.input-group input::placeholder {
+.primary-group input::placeholder {
   color: black;
 }
 
-.input-group input:focus {
+.primary-group input:focus {
   outline: none;
 }
 
@@ -138,7 +153,7 @@ span #HomeLight:hover, #MoviesLight:hover, #TrendingLight:hover, #PricingLight:h
     font-size: 15px;
     display: flex;
     align-items: center;
-    color: #fff;
+    color: $whiteColor;
     padding: 5px 10px;
     margin-left: 10px;
     cursor: pointer;

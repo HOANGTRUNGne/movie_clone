@@ -13,19 +13,8 @@ const MovieItem = (props) => {
     const {title, poster_path} = movie
     const imagesMovie = props.imagesMovie
 
-        // const strScores = title.replaceAll(' ', '-');
-        //
-        // const strConlon = strScores.replaceAll(':', '');
-        //
-        // const strPossessive = strConlon.replaceAll("'s","-s");
-        //
-        //
-        // console.log(strPossessive.toLowerCase())
-    // console.log((movie.id).toString())
-
-
     return (
-        <Link  to={`/info/${movie.id}`} style={{ textDecoration: 'none' }}>
+        <Link to={`/info/${movie.id}`} style={{textDecoration: 'none'}}>
             <div id={'container'}>
                 <img src={Play} id={'playIcon'} alt={''}/>
                 <img src={poster_path ? `${imagesMovie}${poster_path}` : NoImg}
@@ -37,7 +26,6 @@ const MovieItem = (props) => {
 }
 
 const MoviesPage = () => {
-
         const [movieData, setMovieData] = useState([])
         const [genreMovies, setGenreMovies] = useState([])
         const Api = 'https://api.themoviedb.org/3/discover/movie'
@@ -53,7 +41,9 @@ const MoviesPage = () => {
             setGenreMovies(results)
         }
         useEffect(() => {
-            MovieCall()
+            setTimeout(() => {
+                MovieCall()
+            }, 100)
         }, [])
 
 

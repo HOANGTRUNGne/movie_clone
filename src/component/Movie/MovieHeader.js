@@ -1,10 +1,37 @@
-import React from 'react';
-import PlayWite from "../../image/play_white.svg";
+import React, {useState} from 'react';
+import PlayWhite from "../../image/play_white.svg";
 import {Link} from "react-router-dom";
+import LoadingSkeleton from "../loading/LoadingSkeleton";
 
+const LoadingMovieHeader = () => {
+    return (
+        <div className={'movie-header'}>
+            <div className={'movie-detail'} style={{color: 'white',}}>
+                <div className={'movie-banner'}>
+                    <div className={'poster-wrapper'}>
+                        <LoadingSkeleton className={'poster'}/>
+                    </div>
+                    <div className={'intro-wrapper'}>
+                        <div className={'intro-title'}>
+                            <LoadingSkeleton style={{minHeight: '71px', margin: '0'}}/>
+
+                        </div>
+                        <div className={'actions'}>
+                            <LoadingSkeleton style={{minHeight: '40px', minWidth: '980px'}}/>
+                        </div>
+                        <div className={'intro-overview'}>
+                            <LoadingSkeleton style={{minHeight: '127px', minWidth: '980px'}}/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    )
+}
 const MovieHeader = (props) => {
-    const {poster_path, title, genres, overview, tagline, release_date, backdrop_path, runtime} = props.currentMovie
-    const imagesMovieDetail = props.imagesMovieDetail
+    const {currentMovie = {}, imagesMovieDetail = '', handleModal, loading} = props
+    const {poster_path, title, genres, overview, tagline, release_date, backdrop_path, runtime} = currentMovie
     const genresMovie = genres?.map(genre => {
         return (
             <Link to={'/'} key={genre.id} style={{marginLeft: '10px'}}>{genre.name}</Link>
@@ -17,42 +44,49 @@ const MovieHeader = (props) => {
     }
     return (
         <>
-            <div className={'movie-header'} style={{backgroundImage: `url(${imagesMovieDetail}${backdrop_path})`}}>
-                <div className={'movie-detail'} style={{color:'white',}}>
-                    <div className={'movie-banner'}>
-                        <div className={'poster-wrapper'}>
-                            <img className={'poster'}
-                                 src={`${imagesMovieDetail}${poster_path}`}/>
-                        </div>
-                        <div className={'intro-wrapper'}>
-                            <div className={'intro-title'}>
-                                <h2>
-                                    {title}
-                                    <span>(2022)</span>
-                                </h2>
-                                <div className={'fact'}>
-                                    <span className={'release-date'}>{release_date}</span>
-                                    <span>{genresMovie}</span>
-                                    <span>{formatTime(runtime)}</span>
-                                </div>
+            {loading ?
+                <LoadingMovieHeader/>
+                :
+                <div className={'movie-header'} style={{backgroundImage: `url(${imagesMovieDetail}${backdrop_path})`}}>
+                    <div className={'movie-detail'} style={{color: 'white',}}>
+                        <div className={'movie-banner'}>
+                            <div className={'poster-wrapper'}>
+                                <img className={'poster'}
+                                     src={`${imagesMovieDetail}${poster_path}`}/>
                             </div>
-                            <div className={'actions'}>
-                                <div to={'/'} className={'play-trailer'}>
-                                    <img src={PlayWite} alt={''}/>
-                                    Play Trailer
+                            <div className={'intro-wrapper'}>
+                                <div className={'intro-title'}>
+                                    <h2>
+                                        {title}
+                                        <span>({parseInt(release_date)})</span>
+                                    </h2>
+                                    <div className={'fact'}>
+                                        <span className={'release-date'}>{release_date}</span>
+                                        <span>{genresMovie}</span>
+                                        <span>{formatTime(runtime)}</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className={'intro-overview'}>
-                                <h3 className={'tagline'}>{tagline}</h3>
-                                <h3>Overview</h3>
-                                <p>{overview}</p>
+                                <div className={'actions'}>
+                                    <div className={'play-trailer'} onClick={() => handleModal()}>
+                                        <img src={PlayWhite} alt={''}/>
+                                        Play Trailer
+                                    </div>
+                                </div>
+                                <div className={'intro-overview'}>
+                                    <h3 className={'tagline'}>{tagline}</h3>
+                                    <h3>Overview</h3>
+                                    <p>{overview}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+
+            }
         </>
     );
 };
+
+MovieHeader.Loading = LoadingMovieHeader
 
 export default MovieHeader;

@@ -1,3 +1,4 @@
+@use "variables" as *;
 body {
   overflow-x: hidden;
 }
@@ -14,7 +15,7 @@ body {
 }
 
 .secondaryBgColor {
-  background-color: #fff;
+  background-color: $whiteColor;
   width: 100%;
 }
 
@@ -26,7 +27,7 @@ body {
 }
 
 .mainColor {
-  color: #fff;
+  color: $whiteColor;
   display: flex;
   justify-content: center;
   font-size: 1rem;
@@ -63,9 +64,18 @@ body {
 
 #smaller-Text {
   width: 300px;
-  font-size: 14px;
+  font-size: 1rem;
   text-align: center;
   text-decoration: none;
+  color: $blackColor;
+
+  &:hover {
+    color: rgb(1, 180, 228);
+  }
+
+  &:focus {
+    color: rgb(1, 180, 228);
+  }
 }
 
 #playIcon {
@@ -95,7 +105,7 @@ body {
 }
 
 .DarkTheme {
-  color: #fff;
+  color: $whiteColor;
 }
 
 .LightThemeClose {
@@ -149,10 +159,8 @@ body {
 }
 
 .intro-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  align-content: center;
+  padding-top: 95px;
+  padding-bottom: 85px;
   box-sizing: border-box;
   padding-left: 40px;
 
@@ -189,7 +197,7 @@ body {
   & .actions {
     display: flex;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 
     & .play-trailer {
       border: none;
@@ -200,7 +208,10 @@ body {
       will-change: opacity;
       transition: linear .1s;
       display: flex;
-      &:hover{
+      padding: 10px;
+      cursor: pointer;
+
+      &:hover {
         opacity: 0.6;
       }
 
@@ -271,12 +282,12 @@ body {
   }
 }
 
-.wrapper-content-right {
+.wrapper-content-left {
   display: flex;
   flex-direction: column;
   width: 1030px;
   min-width: 1030px;
-
+  padding-right: 30px;
 }
 
 .panel {
@@ -295,22 +306,20 @@ body {
 }
 
 .top-cast {
-  padding-right: 30px;
 
   & .cast {
     min-width: 140px;
-    width: 140px;
+    max-width: 145px;
     margin: 10px 4px 10px 10px;
     border: 1px solid rgba(227, 227, 227, 1);
-    padding-bottom: 10px;
+    padding-bottom: 20px;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
 
     & .cast-img {
       min-width: 138px;
-      width: 138px;
-      height: 175px;
+      height: auto;
       display: block;
 
       & img {
@@ -345,8 +354,51 @@ body {
     top: 0;
     left: 0;
   }
+}
 
-  & .scroller {
+.recommendation {
+  display: flex;
+  & .card {
+    margin-right: 15px;
+    width: 250px;
+    cursor: pointer;
+    & .image {
+      width: 100%;
+      height: 141px;
 
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+    }
+  }
+  & .content{
+    display: flex;
+    color: black;
+    align-items: center;
+    justify-content: space-between;
+    & p {
+      font-weight: 400;
+      font-size: 1em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: inline-block;
+      padding-right: 20px;
+      padding-left: 5px;
+      width: 50%;
+      margin: 5px 0;
+    }
+    & span{
+      font-size: 0.9em;
+      display: flex;
+      align-items: flex-end;
+    }
+    & img{
+      width: 20px;
+      margin-right: 3px;
+    }
   }
 }

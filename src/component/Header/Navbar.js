@@ -1,8 +1,36 @@
 import React, {useState, createContext} from 'react';
 import '../../style/Header.scss'
 import SearchBtn from '../../image/search.svg'
+import Avatar from '../../image/user.svg'
+import Logout from '../../image/logout.svg'
+import Help from '../../image/help.svg'
+import Coin from '../../image/coin.svg'
+import UserProfile from '../../image/userprofile.svg'
 import { NavLink} from "react-router-dom";
 
+const AccountArr = [
+    {
+        icon: UserProfile,
+        title: 'View profile',
+        to: '',
+    },
+    {
+        icon: Coin,
+        title: 'Purchases and memberships',
+        to: '',
+    },
+    {
+        icon: Help,
+        title: 'Help',
+        to: '',
+    },
+    {
+        icon: Logout,
+        title: 'Log Out',
+        to: '',
+    },
+
+]
 export const Container = React.createContext()
 const Navbar = () => {
     const [toggle, setToggle] = useState(true)
@@ -33,9 +61,12 @@ const Navbar = () => {
                         <span id={toggle ? 'Movies' : 'MoviesLight'}>Pricing</span>
                     </NavLink>
                 </div>
-                <div className={'input-group'}>
+                <div className={'primary-group'}>
                     <input type={"text"} placeholder={'Search something...'}/>
                     <img src={SearchBtn} id={'search'} alt={'search'}/>
+                    <div className={'account'}>
+                        <img src={Avatar} alt={''} className={'avatar'} />
+                    </div>
                     <div id={'Color-switcher'} onClick={() => setToggle(!toggle)}>
                         <div id={toggle ? 'Color-switcher-mover' : 'Color-switcher-moved'}></div>
                     </div>

@@ -1,52 +1,16 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Fb from "../../image/facebook.svg";
 import Ins from "../../image/instagram.svg";
 import Tw from "../../image/twitter.svg";
 import LinkImg from "../../image/link.svg";
 import {Link} from "react-router-dom";
 import NoImg from "../../image/user.svg";
+import MovieContentLeft from './MovieContentLeft'
+import LoadingSkeleton from "../loading/LoadingSkeleton";
 
-const Cast = (props) => {
-    const {imagesMovieContent='', member={}} = props
-    const {name, profile_path, character} = member
-    return (
-        <div className={'cast'}>
-            <Link to={'/'} className={'cast-img'}>
-                <img src={profile_path ? `${imagesMovieContent}${profile_path}` : NoImg}  alt={''}/>
-            </Link>
-            <p style={{fontWeight: 'bold', color:'#000'}}>{name}</p>
-            <p className={'cast-character'}>
-                {character}
-            </p>
-        </div>
-    )
-}
-
-const MovieContentRight = ({castMovie,...rest}) => {
-    const {cast = []} = castMovie
-    const sizeListCast = 6
-    return (
-        <div className={'wrapper-content-right'}>
-            <div className={'panel top-cast'} style={{border: "none"}}>
-                <h3>Top Billed Cast</h3>
-                <div className={'people'}>
-                    {
-                    cast.slice(0, sizeListCast).map(member => <Cast {...{key:member.id, member}} {...rest}  />)
-                }
-
-                </div>
-            </div>
-            <div className={'panel'}>
-                <h3>Review</h3>
-                <div>
-
-                </div>
-            </div>
-        </div>
-    )
-}
-const MovieContentLeft = (props) => {
-    const {status, original_title, budget, revenue} = props.currentMovie
+const MovieContentRight = (props) => {
+    const {currentMovie = {}} = props
+    const {status, original_title, budget, revenue} = currentMovie
     return (
         <div className={'content-status'}>
             <div className={'fact-left-col'}>
@@ -85,23 +49,32 @@ const MovieContentLeft = (props) => {
         </div>
     )
 }
+const MovieContentRightLoading = () => {
+    return (
+            <LoadingSkeleton className={'content-status'} style={{minHeight:'692px'}}/>
+    )
+}
 
 const MovieContent = (props) => {
-    const currentMovie = props.currentMovie
-    const castMovie = props.castMovie
+    const {currentMovie = {}, castMovie = {}, relatedMovie = {}, loading, setLoading} = props
     const imagesMovieContent = 'https://image.tmdb.org/t/p/w500'
+
+
     return (
         <>
             <div className={'movie-header'}>
                 <div className={'movie-detail'} style={{backgroundImage: "none"}}>
                     <div className={'movie-banner'}>
-                        <MovieContentRight castMovie={castMovie} imagesMovieContent={imagesMovieContent}/>
-                        <MovieContentLeft currentMovie={currentMovie}/>
+                        {!loading && <MovieContentLeft  {...{currentMovie, castMovie, imagesMovieContent, relatedMovie}}/>}
+                        {loading && <MovieContentLeft.Loading/>}
+                        {loading && <MovieContentRight.Loading/>}
+                        {!loading && <MovieContentRight {...{currentMovie}}/>}
                     </div>
                 </div>
             </div>
         </>
     );
 };
+MovieContentRight.Loading = MovieContentRightLoading
 
 export default MovieContent;
