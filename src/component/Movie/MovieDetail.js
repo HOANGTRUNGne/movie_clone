@@ -6,9 +6,9 @@ import MovieHeader from "./MovieHeader";
 import MovieContent from "./MovieContent";
 import TrailerMovie from "./TrailerMovie";
 
-const MovieDetail = (props) => {
+const MovieDetail = () => {
     const [loading, setLoading] = useState(true)
-    const [switchModal, setSwitchModal] = useState(false)
+    const [switchTrailer, setTrailer] = useState(false)
     const [currentMovie, setMovieDetail] = useState({})
     const [castMovie, setCastMovie] = useState({})
     const [relatedMovie, setRelatedMovie] = useState({})
@@ -58,13 +58,13 @@ const MovieDetail = (props) => {
         }, 300)
     }, [])
 
-    const handleModal = () => {
-        setSwitchModal(!switchModal)
+    const modalTrailer = () => {
+        setTrailer(!switchTrailer)
     }
     useEffect(() => {
         const close = (e) => {
-            if (e.keyCode === 27 && !switchModal) {
-                setSwitchModal(switchModal)
+            if (e.keyCode === 27 && !switchTrailer) {
+                setTrailer(switchTrailer)
             }
         }
         window.addEventListener('keydown', close)
@@ -73,8 +73,8 @@ const MovieDetail = (props) => {
 
     return (
         <>
-            {switchModal && <TrailerMovie {...{handleModal, currentMovie}}/>}
-            <MovieHeader {...{currentMovie, imagesMovieDetail, loading, handleModal}} />
+            {switchTrailer && <TrailerMovie {...{modalTrailer, currentMovie}}/>}
+            <MovieHeader {...{currentMovie, imagesMovieDetail, loading, modalTrailer}} />
             <MovieContent {...{currentMovie, castMovie, relatedMovie, loading, setLoading}} />
         </>
     );

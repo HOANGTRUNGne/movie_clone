@@ -26,6 +26,7 @@ const MovieItem = (props) => {
 }
 
 const MoviesPage = () => {
+
         const [movieData, setMovieData] = useState([])
         const [genreMovies, setGenreMovies] = useState([])
         const Api = 'https://api.themoviedb.org/3/discover/movie'
