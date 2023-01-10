@@ -7,7 +7,7 @@ import Help from '../../image/help.svg'
 import Coin from '../../image/coin.svg'
 import UserProfile from '../../image/userprofile.svg'
 import { NavLink} from "react-router-dom";
-import FormLogIn from "../Account/FormLogIn";
+import FormLog from "../Account/FormLog";
 
 const AccountArr = [
     {
@@ -84,7 +84,7 @@ const Header = () => {
                             {/*<img src={Avatar} alt={''} className={'avatar'} />*/}
                             <div className={'button'} onClick={() => modalAccount()}>
                                 Sign in
-                                { switchAccount && <FormLogIn {...{modalAccount}} />}
+                                { switchAccount && <FormLog {...{modalAccount}} />}
                             </div>
                         </div>
                         <div id={'Color-switcher'} onClick={() => setToggle(!toggle)}>
