@@ -7,7 +7,8 @@ import Help from '../../image/help.svg'
 import Coin from '../../image/coin.svg'
 import UserProfile from '../../image/userprofile.svg'
 import { NavLink} from "react-router-dom";
-import FormLog from "../Account/FormLog";
+import SignIn from "../Account/SignIn";
+import SignUp from "../Account/SignUp";
 
 const AccountArr = [
     {
@@ -35,20 +36,25 @@ const AccountArr = [
 export const Container = React.createContext()
 const Header = () => {
     const [toggle, setToggle] = useState(true)
-    const [switchAccount, setSwitchAccount] = useState(false)
+    const [switchSignUp, setSwitchSignUp] = useState(false)
+    const [formSign, setFormSign] = useState(false)
 
     const modalAccount = () =>{
-        setSwitchAccount(!switchAccount)
+        setSwitchSignUp(!switchSignUp)
     }
     useEffect(() => {
         const close = (e) => {
-            if (e.keyCode === 27 && !switchAccount) {
-                setSwitchAccount(switchAccount)
+            if (e.keyCode === 27 && !switchSignUp) {
+                switchSignUp(switchSignUp)
             }
         }
         window.addEventListener('keydown', close)
         return () => window.removeEventListener('keydown', close)
     }, [])
+
+    const changeForm = () => {
+        setFormSign(!formSign)
+    }
 
     return (
         <Container.Provider value={toggle}>
@@ -78,13 +84,17 @@ const Header = () => {
                         </NavLink>
                     </div>
                     <div className={'primary-group'}>
-                        <input type={"text"} placeholder={'Search something...'}/>
-                        <img src={SearchBtn} id={'search'} alt={'search'}/>
+                        {/*<input type={"text"} placeholder={'Search something...'}/>*/}
+                        {/*<img src={SearchBtn} id={'search'} alt={'search'}/>*/}
                         <div className={'account'}>
                             {/*<img src={Avatar} alt={''} className={'avatar'} />*/}
                             <div className={'button'} onClick={() => modalAccount()}>
                                 Sign in
-                                { switchAccount && <FormLog {...{modalAccount}} />}
+                                {/*{  <SignIn {...{modalAccount, changeForm}} />}*/}
+                            </div>
+                            <div className={'button'} onClick={() => modalAccount()}>
+                                Sign up
+                                { switchSignUp && <SignUp {...{modalAccount, changeForm}} />}
                             </div>
                         </div>
                         <div id={'Color-switcher'} onClick={() => setToggle(!toggle)}>
