@@ -1,0 +1,167 @@
+@use "variables" as *;
+
+.container-sign {
+  margin: 0;
+  min-height: 100%;
+  padding: 0;
+  position: relative;
+  z-index: 0;
+  color: $whiteColor;
+  background-color: $blackColor;
+
+  & .bg {
+    background-size: cover;
+    display: block;
+    height: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    opacity: .5;
+
+    & img {
+      min-height: 100%;
+      min-width: 100%;
+    }
+  }
+}
+.login-body {
+  width: 800px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+
+  background-color: transparent;
+  margin: 0 auto -236px;
+  min-height: 100vh;
+&:before{
+  content: "";
+  display: block;
+  height: 91px;
+}
+  & .close-account {
+    padding: 0;
+    cursor: pointer;
+    &:hover{
+      padding: 0;
+    }
+  }
+
+  & span {
+    color: rgb(0, 0, 0, 0.5);
+
+    &:hover {
+      color: rgb(0, 0, 0);
+      border: none;
+      padding-bottom: 10px;
+    }
+  }
+}
+
+.container-modal-form {
+  width: 100%;
+  cursor: auto;
+  display: flex;
+  align-items: center;
+
+  background-color: rgba(0,0,0,.8);
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin: 0;
+  min-height: 515px;
+  padding: 0 50px;
+
+  & .left {
+    width: 400px;
+
+    .header {
+      margin-bottom: 28px;
+    }
+
+    .header > h2 {
+      color: #fff;
+      font-size: 32px;
+      font-weight: 500;
+    }
+
+
+    .form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      & .textfield-bg{
+        background-color: #333;
+        border: 0;
+        border-radius: 4px;
+        color: #fff;
+        height: 50px;
+        line-height: 50px;
+        padding: 16px 20px 0;
+      }
+      & .textfield-input{
+        color: white;
+        font-size: 1.5rem;
+        margin: 0;
+
+      }
+      & .textfield-label{
+        color: #8c8c8c;
+        font-size: 16px;
+        padding-left: 15px;
+      }
+    }
+
+    .form > p {
+      text-align: center;
+      font-weight: 500;
+      color: #b3b3b3;
+    }
+
+    .form > p > a {
+      color: #b3b3b3;
+      font-size: 14px;
+    }
+
+    .sign-tab {
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: underline
+    }
+
+    .form-field {
+      height: 46px;
+      padding: 0 16px;
+      border: 2px solid #ddd;
+      border-radius: 4px;
+      outline: 0;
+      transition: .2s;
+      margin-top: 20px;
+    }
+
+    .form-field:focus {
+      border-color: #0f7ef1;
+    }
+
+    .btn-submit {
+      padding: 12px 10px;
+      width: 150px;
+      border: 0;
+      background: linear-gradient(to right, #de48b5 0%, #0097ff 100%);
+      border-radius: 3px;
+      margin: 10px 0;
+      color: #fff;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+  }
+
+  & .right {
+    width: 400px;
+    padding: 10px;
+    & .card{
+      width: 100%;
+      border: 1px white;
+    }
+  }
+}

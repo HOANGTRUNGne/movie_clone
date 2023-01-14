@@ -14,6 +14,7 @@ const MovieDetail = () => {
     const [relatedMovie, setRelatedMovie] = useState({})
     const {id} = useParams()
     const imagesMovieDetail = 'https://image.tmdb.org/t/p/w500'
+    const imagesBanner = 'https://image.tmdb.org/t/p/w1920_and_h800_multi_faces'
     const ApiMovieDetail = `https://api.themoviedb.org/3/movie/${id}`
     const ApiCast = `https://api.themoviedb.org/3/movie/${id}/credits`
     const ApiRelated = `https://api.themoviedb.org/3/movie/${id}/recommendations`
@@ -74,7 +75,7 @@ const MovieDetail = () => {
     return (
         <>
             {switchTrailer && <TrailerMovie {...{modalTrailer, currentMovie}}/>}
-            <MovieHeader {...{currentMovie, imagesMovieDetail, loading, modalTrailer}} />
+            <MovieHeader {...{currentMovie, imagesMovieDetail, imagesBanner, loading, modalTrailer}} />
             <MovieContent {...{currentMovie, castMovie, relatedMovie, loading, setLoading}} />
         </>
     );

@@ -6,9 +6,10 @@ import Logout from '../../image/logout.svg'
 import Help from '../../image/help.svg'
 import Coin from '../../image/coin.svg'
 import UserProfile from '../../image/userprofile.svg'
-import { NavLink} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import SignIn from "../Account/SignIn";
 import SignUp from "../Account/SignUp";
+import Stack from "@mui/material/Stack";
 
 const AccountArr = [
     {
@@ -37,24 +38,29 @@ export const Container = React.createContext()
 const Header = () => {
     const [toggle, setToggle] = useState(true)
     const [switchSignUp, setSwitchSignUp] = useState(false)
+    const [switchSignIn, setSwitchSignIn] = useState(false)
     const [formSign, setFormSign] = useState(false)
 
-    const modalAccount = () =>{
+    const modalSignUp = () => {
         setSwitchSignUp(!switchSignUp)
     }
+    const modalSignIn = () => {
+        setSwitchSignIn(!switchSignIn)
+    }
+    const changeForm = () => {
+        setFormSign(!formSign)
+    }
+
     useEffect(() => {
         const close = (e) => {
             if (e.keyCode === 27 && !switchSignUp) {
-                switchSignUp(switchSignUp)
+                setSwitchSignUp(switchSignUp)
             }
         }
         window.addEventListener('keydown', close)
         return () => window.removeEventListener('keydown', close)
     }, [])
 
-    const changeForm = () => {
-        setFormSign(!formSign)
-    }
 
     return (
         <Container.Provider value={toggle}>
@@ -86,17 +92,23 @@ const Header = () => {
                     <div className={'primary-group'}>
                         {/*<input type={"text"} placeholder={'Search something...'}/>*/}
                         {/*<img src={SearchBtn} id={'search'} alt={'search'}/>*/}
-                        <div className={'account'}>
+                        <Stack direction="row" spacing={2} className={'account'}>
                             {/*<img src={Avatar} alt={''} className={'avatar'} />*/}
-                            <div className={'button'} onClick={() => modalAccount()}>
-                                Sign in
-                                {/*{  <SignIn {...{modalAccount, changeForm}} />}*/}
-                            </div>
-                            <div className={'button'} onClick={() => modalAccount()}>
-                                Sign up
-                                { switchSignUp && <SignUp {...{modalAccount, changeForm}} />}
-                            </div>
-                        </div>
+
+                            <Link to={'/login'}>
+                                <div className={'btn-modal'}>
+                                    Sign in
+                                </div>
+                            </Link>
+
+                            <Link to={'/register'}>
+                                <div className={'btn-modal btn-register'}  onClick={() => modalSignUp()}>
+                                    Sign up
+                                </div>
+                            </Link>
+
+
+                        </Stack>
                         <div id={'Color-switcher'} onClick={() => setToggle(!toggle)}>
                             <div id={toggle ? 'Color-switcher-mover' : 'Color-switcher-moved'}></div>
                         </div>

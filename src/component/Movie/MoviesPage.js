@@ -54,13 +54,13 @@ const MoviesPage = () => {
                 setMovieData(getGenreMovie)
             }
         }
+        const sizeListMovie = 10
         return (
             <>
                 <CategoryBar changeGenres={changeGenres}/>
                 <div className={'movies-container'}>
-                    {movieData.map(movie => <MovieItem key={movie.id} movie={movie} imagesMovie={imagesMovie}/>)}
+                    {movieData.slice(0, sizeListMovie).map(movie => <MovieItem key={movie.id} movie={movie} imagesMovie={imagesMovie}/>)}
                 </div>
-
             </>
         );
     }

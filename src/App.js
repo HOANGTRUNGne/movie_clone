@@ -8,6 +8,8 @@ import PricingPage from "./component/PricingPage";
 import MovieDetail from "./component/Movie/MovieDetail";
 import ErrorPage from "./component/ErrorPage";
 import {AuthContextProvider} from "./context/AuthContext";
+import SignUp from "./component/Account/SignUp";
+import SignIn from "./component/Account/SignIn";
 
 function App() {
 
@@ -17,6 +19,8 @@ function App() {
                 <Header/>
                 <Routes>
                     <Route path={'/'} element={<MoviesPage/>}/>
+                    <Route path={'/login'} element={<SignIn/>}/>
+                    <Route path={'/register'} element={<SignUp/>}/>
                     <Route path={'/info/:id'} element={<MovieDetail/>}/>
                     <Route path={'/info/*'} element={<ErrorPage/>}/>
                     <Route path={'/tvshow'} element={<TvShowPage/>}/>

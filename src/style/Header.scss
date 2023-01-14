@@ -68,10 +68,7 @@ span #HomeLight:hover, #MoviesLight:hover, #TrendingLight:hover, #PricingLight:h
   & .account {
     color: $whiteColor;
     margin-right: 20px;
-    cursor: pointer;
     padding: 10px;
-    display: flex;
-
 
     & .avatar {
       width: 32px;
@@ -80,9 +77,21 @@ span #HomeLight:hover, #MoviesLight:hover, #TrendingLight:hover, #PricingLight:h
       object-fit: cover;
     }
 
-    & .button {
-      border: 1px solid white;
+    & .btn-modal {
       padding: 5px;
+      cursor: pointer;
+      color: white;
+    }
+
+    & .btn-register {
+      box-shadow: inset 0 0 0 1px #fff;
+      padding: 5px;
+
+      &:hover {
+        background: hsla(0, 0%, 100%, .1);
+        box-shadow: inset 0 0 0 2px #fff;
+        color: #fff;
+      }
     }
   }
 }
@@ -173,95 +182,3 @@ span #HomeLight:hover, #MoviesLight:hover, #TrendingLight:hover, #PricingLight:h
   }
 }
 
-.modal-account {
-  width: 800px;
-
-  & span {
-    color: rgb(0, 0, 0, 0.5);
-
-    &:hover {
-      color: rgb(0, 0, 0);
-      border: none;
-      padding-bottom: 10px;
-    }
-  }
-
-}
-
-.container-modal-form {
-  background-color: white;
-  border-radius: 20px;
-  overflow: hidden;
-  padding: 50px;
-  width: 100%;
-  cursor: auto;
-
-  & .left {
-    width: 500px;
-
-    //.header {
-    //  max-width: 80%;
-    //
-    //}
-
-    .header > h2 {
-      margin: 0;
-      color: #4f46a5;
-    }
-
-    .header > h4 {
-      margin-top: 10px;
-      margin-bottom: 0;
-      font-weight: normal;
-      font-size: 15px;
-      color: rgba(0, 0, 0, .4);
-    }
-
-    .form {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .form > p {
-      text-align: center;
-      font-weight: 500;
-    }
-
-    .form > p > a {
-      color: #000;
-      font-size: 14px;
-    }
-
-    .sign-tab {
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .form-field {
-      height: 46px;
-      padding: 0 16px;
-      border: 2px solid #ddd;
-      border-radius: 4px;
-      outline: 0;
-      transition: .2s;
-      margin-top: 20px;
-    }
-
-    .form-field:focus {
-      border-color: #0f7ef1;
-    }
-
-    .form > button {
-      padding: 12px 10px;
-      width: 150px;
-      border: 0;
-      background: linear-gradient(to right, #de48b5 0%, #0097ff 100%);
-      border-radius: 3px;
-      margin: 10px 0;
-      color: #fff;
-      letter-spacing: 1px;
-      cursor: pointer;
-    }
-  }
-}

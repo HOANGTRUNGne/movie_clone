@@ -30,7 +30,7 @@ const LoadingMovieHeader = () => {
     )
 }
 const MovieHeader = (props) => {
-    const {currentMovie = {}, imagesMovieDetail = '', modalTrailer, loading} = props
+    const {currentMovie = {}, imagesMovieDetail = '', modalTrailer, loading, imagesBanner = ''} = props
     const {poster_path, title, genres, overview, tagline, release_date, backdrop_path, runtime} = currentMovie
     const genresMovie = genres?.map(genre => {
         return (
@@ -47,7 +47,7 @@ const MovieHeader = (props) => {
             {loading ?
                 <LoadingMovieHeader/>
                 :
-                <div className={'movie-header'} style={{backgroundImage: `url(${imagesMovieDetail}${backdrop_path})`}}>
+                <div className={'movie-header'} style={{backgroundImage: `url(${imagesBanner}${backdrop_path})`}}>
                     <div className={'movie-detail'} style={{color: 'white',}}>
                         <div className={'movie-banner'}>
                             <div className={'poster-wrapper'}>
@@ -67,6 +67,9 @@ const MovieHeader = (props) => {
                                     </div>
                                 </div>
                                 <div className={'actions'}>
+                                    <div className={''}>
+
+                                    </div>
                                     <div className={'play-trailer'} onClick={() => modalTrailer()}>
                                         <img src={PlayWhite} alt={''}/>
                                         Play Trailer
