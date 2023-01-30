@@ -2,8 +2,6 @@ import React, {useState} from 'react';
 import {UserAuth} from "../../context/AuthContext";
 import '../../style/Account.scss'
 import '../../style/Header.scss'
-import TextField from '@mui/material/TextField';
-import Stack from "@mui/material/Stack";
 import {Link} from "react-router-dom";
 import bg from  '../../image/bg-register.jpeg'
 
@@ -36,23 +34,23 @@ const SignUp = (props) => {
                             <h2>Sign up</h2>
                         </div>
                         <form className="form" onSubmit={handleSignUp}>
-                            <Stack spacing={2}>
-                                <TextField id="standard-basic-login-user" label="Name" variant="standard"
+                            <div spacing={2}>
+                                <input id="standard-basic-login-user" label="Name" variant="standard"
                                            InputLabelProps={{className: 'textfield-label'}}
                                            InputProps={{className: 'textfield-input', autoComplete: 'off'}}
                                            className={'textfield-bg'}
                                            value={mail} onChange={(e) => setMail(e.target.value)}/>
 
-                                <TextField id="standard-basic-login-password" label="Password" variant="standard" value={password}
+                                <input id="standard-basic-login-password" label="Password" variant="standard" value={password}
                                            InputLabelProps={{className: 'textfield-label'}}
                                            InputProps={{className: 'textfield-input'}}
                                            className={'textfield-bg'} type={"password"}
                                            onChange={(e) => setPassword(e.target.value)}/>
-                            </Stack>
+                            </div>
                             <p><a href="#">Forgot Password</a></p>
-                            <Stack alignItems="center">
+                            <div alignItems="center">
                                 <button className={'btn-submit'}>SIGN UP NOW</button>
-                            </Stack>
+                            </div>
                             <p>Already have an LotsoBnb account?&nbsp;
                                 <Link to={'/login'}  className={'sign-tab'}
                                       style={{fontSize: '16px', color: '#005dc6'}}>Sign in.
