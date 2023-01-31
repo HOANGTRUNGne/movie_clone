@@ -7,7 +7,8 @@ import Help from '../../image/help.svg'
 import Coin from '../../image/coin.svg'
 import UserProfile from '../../image/userprofile.svg'
 import {Link, NavLink} from "react-router-dom";
-import {Button, Col, Layout, Menu, Modal, Row, Space} from 'antd';
+import {Button, Checkbox, Col, Form, Input, Layout, Menu, Modal, Row, Space} from 'antd';
+import SignIn from "../Account/SignIn";
 
 const {Header: Nav} = Layout;
 const AccountArr = [
@@ -38,17 +39,8 @@ const AccountArr = [
 export const Container = React.createContext()
 const Header = () => {
     const [toggle, setToggle] = useState(true)
-    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const showModal = () => {
-        setIsModalOpen(true);
-    };
-    const handleOk = () => {
-        setIsModalOpen(false);
-    };
-    const handleCancel = () => {
-        setIsModalOpen(false);
-    };
+
 
     return (
         <Container.Provider value={toggle}>
@@ -58,27 +50,20 @@ const Header = () => {
                     <h1 id={toggle ? 'heading' : ''}><NavLink to={'/'}>LotsoBnb</NavLink></h1>
                 </Col>
 
-                <Col span={20}>
-                    <Space align="center">
+                <Col span={16}>
                     <Menu mode={'horizontal'}
                           items={[
                               {label: 'Home', key: 'home',},
                               {label: 'Movie', key: 'movie',},
-                              {label: 'News', key: 'News',},
-                              {label: 'Pricing', key: 'pricing',},
-                              {label: 'SomeThings', key: 'someThings',},
+                              {label: (<NavLink to="/trending">Trending</NavLink>), key: 'trending',},
+                              {label: (<NavLink to="/tvshow">Tv Show</NavLink>), key: 'tvshow',},
+                              {label: (<NavLink to="/pricing">Pricing</NavLink>), key: 'pricing',},
                           ]}
                     />
+                </Col>
 
-                                <Button type="primary" onClick={showModal}>
-                                    Open Modal
-                                </Button>
-                                <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-                                    <p>Some contents...</p>
-                                    <p>Some contents...</p>
-                                    <p>Some contents...</p>
-                                </Modal>
-                    </Space>
+                <Col span={4} style={{display: "flex", alignItems: "center"}}>
+                  <SignIn />
                 </Col>
             </Row>
             </Nav>
@@ -111,8 +96,6 @@ const Header = () => {
             {/*        /!*<img src={SearchBtn} id={'search'} alt={'search'}/>*!/*/}
             {/*        <div className={'account'}>*/}
             {/*            /!*<img src={Avatar} alt={''} className={'avatar'} />*!/*/}
-
-
 
 
             {/*        </div>*/}

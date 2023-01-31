@@ -48,15 +48,6 @@
     }
   }
 
-  & span {
-    color: rgb(0, 0, 0, 0.5);
-
-    &:hover {
-      color: rgb(0, 0, 0);
-      border: none;
-      padding-bottom: 10px;
-    }
-  }
 }
 
 .container-modal-form {
@@ -79,80 +70,11 @@
       margin-bottom: 28px;
     }
 
-    .header > h2 {
+    .header > h1 {
       color: #fff;
-      font-size: 32px;
-      font-weight: 500;
-    }
-
-
-    .form {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      & .textfield-bg{
-        background-color: #333;
-        border: 0;
-        border-radius: 4px;
-        color: #fff;
-        height: 50px;
-        line-height: 50px;
-        padding: 16px 20px 0;
-      }
-      & .textfield-input{
-        color: white;
-        font-size: 1.5rem;
-        margin: 0;
-
-      }
-      & .textfield-label{
-        color: #8c8c8c;
-        font-size: 16px;
-        padding-left: 15px;
-      }
-    }
-
-    .form > p {
-      text-align: center;
-      font-weight: 500;
-      color: #b3b3b3;
-    }
-
-    .form > p > a {
-      color: #b3b3b3;
-      font-size: 14px;
-    }
-
-    .sign-tab {
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: underline
-    }
-
-    .form-field {
-      height: 46px;
-      padding: 0 16px;
-      border: 2px solid #ddd;
-      border-radius: 4px;
-      outline: 0;
-      transition: .2s;
-      margin-top: 20px;
-    }
-
-    .form-field:focus {
-      border-color: #0f7ef1;
-    }
-
-    .btn-submit {
-      padding: 12px 10px;
-      width: 150px;
-      border: 0;
-      background: linear-gradient(to right, #de48b5 0%, #0097ff 100%);
-      border-radius: 3px;
-      margin: 10px 0;
-      color: #fff;
-      letter-spacing: 1px;
-      cursor: pointer;
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 30px;
     }
   }
 

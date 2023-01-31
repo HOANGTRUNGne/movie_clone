@@ -4,6 +4,7 @@ import '../../style/Account.scss'
 import '../../style/Header.scss'
 import {Link} from "react-router-dom";
 import bg from  '../../image/bg-register.jpeg'
+import {Button, Form, Input} from "antd";
 
 
 const SignUp = (props) => {
@@ -23,6 +24,12 @@ const SignUp = (props) => {
         setPassword('')
     }
 
+    const onFinish = (values) => {
+        console.log('Success:', values);
+    };
+    const onFinishFailed = (errorInfo) => {
+        console.log('Failed:', errorInfo);
+    };
 
     return (
         <div className={'container-sign'}>
@@ -31,38 +38,65 @@ const SignUp = (props) => {
                 <div className="container-modal-form">
                     <div className={'left'}>
                         <div className="header">
-                            <h2>Sign up</h2>
+                            <h1>Sign up</h1>
                         </div>
-                        <form className="form" onSubmit={handleSignUp}>
-                            <div spacing={2}>
-                                <input id="standard-basic-login-user" label="Name" variant="standard"
-                                           InputLabelProps={{className: 'textfield-label'}}
-                                           InputProps={{className: 'textfield-input', autoComplete: 'off'}}
-                                           className={'textfield-bg'}
-                                           value={mail} onChange={(e) => setMail(e.target.value)}/>
+                        <div className={'form'}>
+                            <Form
+                                name="basic"
 
-                                <input id="standard-basic-login-password" label="Password" variant="standard" value={password}
-                                           InputLabelProps={{className: 'textfield-label'}}
-                                           InputProps={{className: 'textfield-input'}}
-                                           className={'textfield-bg'} type={"password"}
-                                           onChange={(e) => setPassword(e.target.value)}/>
-                            </div>
-                            <p><a href="#">Forgot Password</a></p>
-                            <div alignItems="center">
-                                <button className={'btn-submit'}>SIGN UP NOW</button>
-                            </div>
-                            <p>Already have an LotsoBnb account?&nbsp;
-                                <Link to={'/login'}  className={'sign-tab'}
-                                      style={{fontSize: '16px', color: '#005dc6'}}>Sign in.
-                                </Link>
-                            </p>
-                        </form>
+                                wrapperCol={{
+                                    span: 24,
+                                }}
+                                style={{
+                                    maxWidth: 600,
+                                }}
+                                initialValues={{
+                                    remember: true,
+                                }}
+                                onFinish={onFinish}
+                                onFinishFailed={onFinishFailed}
+                                autoComplete="off"
+                            >
+                                <Form.Item
+                                    name="username"
+                                    rules={[
+                                        {
+                                            required: true,
+                                            message: 'Please input your username!',
+                                        },
+                                    ]}
+                                >
+                                    <Input placeholder="Username" />
+                                </Form.Item>
+
+                                <Form.Item
+                                    name="password"
+                                    rules={[
+                                        {
+                                            required: true,
+                                            message: 'Please input your password!',
+                                        },
+                                    ]}
+                                >
+                                    <Input.Password  placeholder="Password"/>
+                                </Form.Item>
+
+                                <Form.Item
+                                    wrapperCol={{
+                                        span: 24,
+                                    }}
+                                >
+                                    <Button block type="primary" htmlType="submit">
+                                        Submit
+                                    </Button>
+                                </Form.Item>
+                            </Form>
+                        </div>
+
+
                     </div>
                     <div className={'right'}>
                         <h1 style={{fontSize: '50px', textAlign: 'center', color: "#FF206EFF"}}>LotsoBnb</h1>
-                        <div className={'card'}>
-
-                        </div>
                     </div>
                 </div>
             </div>

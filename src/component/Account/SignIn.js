@@ -3,12 +3,28 @@ import '../../style/Account.scss'
 import '../../style/Header.scss'
 import bg from '../../image/bg-login.jpeg'
 import {UserAuth} from "../../context/AuthContext";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
+import {Button, Checkbox, Form, Input, Modal} from "antd";
 
 
 const SignIn = () => {
     const [mail, setMail] = useState('')
     const [password, setPassword] = useState('')
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const showModal = () => {
+        setIsModalOpen(true);
+    };
+    const handleOk = () => {
+        setIsModalOpen(false);
+    };
+    const handleCancel = () => {
+        setIsModalOpen(false);
+    };
+    const onFinish = (values) => {
+        console.log('Received values of form: ', values);
+    };
 
     const handleSignIn = async (e) => {
         e.preventDefault()
@@ -22,45 +38,73 @@ const SignIn = () => {
     }
 
     return (
-        <div className={'container-sign'}>
-            <div className={'bg'}><img src={bg} alt={''}/></div>
-            <div className={'login-body'}>
-                <div className="container-modal-form">
-                    <div className={'left'}>
-                        <div className="header">
-                            <h2>Sign in</h2>
-                        </div>
-                        <form className="form" onSubmit={handleSignIn}>
-                            <div spacing={2}>
-                                <input id="standard-basic-signup-user" label="Name" variant="standard"
-                                           InputLabelProps={{className: 'textfield-label'}}
-                                           InputProps={{className: 'textfield-input', autoComplete: 'off'}}
-                                           className={'textfield-bg'}
-                                           value={mail} onChange={(e) => setMail(e.target.value)}/>
+        <>
+            <Button type="primary" onClick={showModal}>
+                Log in
+            </Button>
+            <Modal title="Log in" footer={null} open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+                <Form
+                    name="normal_login"
+                    className="login-form"
+                    initialValues={{
+                        remember: true,
+                    }}
+                    onFinish={onFinish}
+                >
+                    <Form.Item
+                        name="username"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input your Username!',
+                            },
+                        ]}
+                    >
+                        <Input placeholder="Username"/>
+                    </Form.Item>
+                    <Form.Item
+                        name="password"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input your Password!',
+                            },
+                        ]}
+                    >
+                        <Input
+                            type="password"
+                            placeholder="Password"
+                        />
+                    </Form.Item>
+                    <Form.Item>
+                        <Form.Item name="remember" valuePropName="checked" noStyle>
+                            <Checkbox>Remember me</Checkbox>
+                        </Form.Item>
 
-                                <input id="standard-basic-signup-password" label="Password" variant="standard"
-                                           value={password}
-                                           InputLabelProps={{className: 'textfield-label'}}
-                                           InputProps={{className: 'textfield-input'}}
-                                           className={'textfield-bg'} type={"password"}
-                                           onChange={(e) => setPassword(e.target.value)}/>
-                            </div>
-                            <p><a href="#">Forgot Password</a></p>
-                            <div alignItems="center">
-                                <button className={'btn-submit'}>SIGN IN NOW</button>
-                            </div>
-                            <p>Don’t have an LotsoBnb account?
-                                <Link to={'/register'} className={'sign-tab'}
-                                      style={{fontSize: '16px', color: '#005dc6'}}>&nbsp;Sign Up.</Link>
+                        <a className="login-form-forgot" href="">
+                            Forgot password
+                        </a>
+                    </Form.Item>
+
+                    <Form.Item>
+                        <div style={{display: 'flex', justifyContent: 'center',}}>
+                            <Button type="primary" block htmlType="submit" className="login-form-button"
+                                    style={{maxWidth: '50%'}}>
+                                Log in
+                            </Button></div>
+
+                    </Form.Item>
+
+                    <Form.Item>
+                        <div>
+                            <p>Don’t have an LotsoBnb account?&nbsp;
+                                <a href="/register">Register now</a>
                             </p>
-                        </form>
-                    </div>
-                    <div className={'right'}>
-                        <h1 style={{fontSize: '50px', textAlign: 'center', color: "#FF206EFF"}}>LotsoBnb</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        </div>
+                    </Form.Item>
+                </Form>
+            </Modal>
+        </>
     );
 };
 
